@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobMatrix | Ultimate Career Hub</title>
+    <meta name="description" content="Premium job portal and interview preparation platform for top tech companies.">
+    <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <nav class="glass">
+        <div class="logo">JobMatrix</div>
+        <div class="nav-links">
+            <a onclick="showView('home')" id="nav-home" class="active">Home</a>
+            <a onclick="showView('jobs')" id="nav-jobs">Jobs</a>
+            <a onclick="showView('prep')" id="nav-prep">Preparation</a>
+            <a onclick="showView('companies')" id="nav-companies">Companies</a>
+            <a onclick="showView('dsa')" id="nav-dsa">DSA Sheet</a>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center;">
+            <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">
+                <i data-lucide="moon"></i>
+            </button>
+            <button class="btn glass" style="padding: 8px 16px;">Sign In</button>
+            <button class="btn btn-primary" style="padding: 8px 16px;">Get Started</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Home View -->
+        <section id="home-view" class="view active">
+            <div class="hero">
+                <h1>Elevate Your <br><span style="color: var(--cyan)">Career Trajectory</span></h1>
+                <p>One-stop platform for high-paying tech jobs and elite interview preparation. Master DSA, Aptitude, and HR rounds.</p>
+                <div style="display: flex; gap: 16px; justify-content: center;">
+                    <button class="btn btn-primary" onclick="showView('jobs')">Browse Jobs</button>
+                    <button class="btn glass" onclick="showView('prep')">Start Prep</button>
+                </div>
+            </div>
+
+            <div class="bento-grid">
+                <div class="bento-item glass glass-hover large">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <div>
+                            <h2 style="font-size: 2rem; margin-bottom: 10px;">DSA Master Sheet</h2>
+                            <p style="color: var(--text-secondary);">450+ Curated problems for SDE-1 roles at FAANG.</p>
+                        </div>
+                        <i data-lucide="code" style="color: var(--accent); width: 48px; height: 48px;"></i>
+                    </div>
+                    <button class="btn glass" onclick="showView('dsa')" style="width: fit-content; margin-top: 20px;">Open Sheet</button>
+                </div>
+                <div class="bento-item glass glass-hover">
+                    <i data-lucide="briefcase" style="color: var(--cyan); margin-bottom: 20px;"></i>
+                    <h3>Latest Jobs</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">200+ New roles added today.</p>
+                </div>
+                <div class="bento-item glass glass-hover">
+                    <i data-lucide="book-open" style="color: var(--accent); margin-bottom: 20px;"></i>
+                    <h3>Company Prep</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Patterns for 50+ Top Companies.</p>
+                </div>
+                <div class="bento-item glass glass-hover medium">
+                    <h3>Success Stories</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">"JobMatrix helped me land my dream job at Amazon. The DSA sheet is legendary!"</p>
+                    <div style="margin-top: auto; display: flex; align-items: center; gap: 10px;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--accent);"></div>
+                        <div>
+                            <p style="font-size: 0.8rem; font-weight: 600;">Rahul Sharma</p>
+                            <p style="font-size: 0.7rem; color: var(--text-secondary);">SDE @ Amazon</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Job Portal View -->
+        <section id="jobs-view" class="view">
+            <div style="padding-top: 120px; margin-bottom: 40px;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Explore Opportunities</h2>
+                <div class="glass" style="padding: 20px; display: flex; gap: 16px; align-items: center;">
+                    <input type="text" id="job-search" placeholder="Search roles, companies..." style="flex: 1; background: transparent; border: none; color: white; outline: none; font-size: 1.1rem;">
+                    <button class="btn btn-primary">Search</button>
+                </div>
+            </div>
+            <div id="job-listings">
+                <!-- Injected by JS -->
+            </div>
+        </section>
+
+        <!-- Preparation View -->
+        <section id="prep-view" class="view">
+            <div style="padding-top: 120px; margin-bottom: 40px;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Preparation Hub</h2>
+                <div class="bento-grid" style="grid-auto-rows: 250px;">
+                    <div class="bento-item glass glass-hover">
+                        <i data-lucide="calculator" style="color: #fb923c; margin-bottom: 15px;"></i>
+                        <h3>Aptitude</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary);">Quantitative, Logical, and Verbal reasoning modules.</p>
+                        <button class="btn glass" style="margin-top: auto;">Practice</button>
+                    </div>
+                    <div class="bento-item glass glass-hover">
+                        <i data-lucide="cpu" style="color: #60a5fa; margin-bottom: 15px;"></i>
+                        <h3>Technical</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary);">OS, DBMS, Networking, and System Design notes.</p>
+                        <button class="btn glass" style="margin-top: auto;">Read Notes</button>
+                    </div>
+                    <div class="bento-item glass glass-hover">
+                        <i data-lucide="users" style="color: #f472b6; margin-bottom: 15px;"></i>
+                        <h3>HR & Soft Skills</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary);">Common questions and behavioral interview tips.</p>
+                        <button class="btn glass" style="margin-top: auto;">Prepare</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Company Guides View -->
+        <section id="companies-view" class="view">
+            <div style="padding-top: 120px; margin-bottom: 40px;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Hiring Processes</h2>
+                <div id="company-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+                    <!-- Injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- DSA Sheet View -->
+        <section id="dsa-view" class="view">
+            <div style="padding-top: 120px; margin-bottom: 40px;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 10px;">Striver's A-Z DSA Sheet</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 30px;">Complete this to master all data structures and algorithms.</p>
+                <div id="dsa-sheet-container">
+                    <!-- Injected by JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
